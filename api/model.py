@@ -1,5 +1,8 @@
+# model.py
 from sqlalchemy import Column, Integer, String, ForeignKey
-from database import Base
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 class User(Base):
     __tablename__ = "users"
@@ -20,5 +23,5 @@ class CompletedTask(Base):
     __tablename__ = "completed_tasks"
 
     id = Column(Integer, primary_key=True, index=True)
-    task_id = Column(Integer, ForeignKey("tasks.id"))  
-    completed_by = Column(Integer, ForeignKey("users.id"))  
+    task_id = Column(Integer, ForeignKey("tasks.id"))
+    completed_by = Column(Integer, ForeignKey("users.id"))
